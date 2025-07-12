@@ -303,7 +303,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
-
+        console.log(user._id)
         const { data } = await API.put(
             `/api/users/update/${user._id}/`,
             user,

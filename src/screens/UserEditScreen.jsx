@@ -14,6 +14,7 @@ function UserEditScreen() {
     const dispatch = useDispatch()
 
     const [name, setName] = useState('')
+    const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [isAdmin, setIsAdmin] = useState(false)
 
@@ -50,9 +51,10 @@ function UserEditScreen() {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        dispatch(updateUser({ _id: user._id, name, email, isAdmin }))
+        dispatch(updateUser({ _id: userId, name,username,    email, isAdmin }))
     }
-
+    console.log(userId)
+    console.log(user._id)
     return (
         <div>
             <Link to='/admin/userlist'>Go Back</Link>
@@ -76,6 +78,15 @@ function UserEditScreen() {
                                 placeholder='Enter name'
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId='username'>
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control
+                                type='text'
+                                placeholder='Enter username'
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
                             />
                         </Form.Group>
 

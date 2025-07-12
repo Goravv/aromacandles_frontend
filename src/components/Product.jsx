@@ -1,13 +1,15 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import API from "../api";
 
 function Product({ product }) {
+  console.log(`${API}/${product.image}`)
   return (
     <Card className="py-3 my-3 rounded shadow-sm border-0 ">
       <Link to={`/product/${product._id}`}>
         <Card.Img
-          src={`http://127.0.0.1:8000${product.image}`}
+          src={`https://aromacandles-backend.onrender.com${product.image}`}
           alt={product.name}
           variant="top"
           className="object-cover "

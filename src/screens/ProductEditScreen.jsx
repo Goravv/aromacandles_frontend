@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,6 +7,7 @@ import Message from '../components/Message';
 import FormContainer from '../components/FormContainer';
 import { listProductDetails, updateProduct } from '../actions/productActions';
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
+import API from '../api';
 
 const ProductEditScreen = () => {
     const { id: productId } = useParams();
@@ -67,15 +67,17 @@ const ProductEditScreen = () => {
     const uploadFileHandler = async (e) => {
         const file = e.target.files[0];
         const formData = new FormData();
+        setImage(`/media/product_images/${file.name}`)
         formData.append('image', file);
         formData.append('product_id', productId);
+        console.log(file.name)
         setUploading(true);
 
         try {
             const config = {
                 headers: { 'Content-Type': 'multipart/form-data' },
             };
-            const { data } = await axios.post('/api/products/upload/', formData, config);
+            const { data } = await API.post('/api/products/upload/', formData, config);
             setImage(data);
         } catch (error) {
             console.error('Image Upload Error:', error);
@@ -84,6 +86,7 @@ const ProductEditScreen = () => {
         }
     };
 
+    console.log(API)
     return (
         <div>
             <Link to='/admin/productlist' className='btn btn-light my-3'>
