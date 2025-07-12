@@ -70,9 +70,7 @@ const ProductEditScreen = () => {
         setImage(`/media/product_images/${file.name}`)
         formData.append('image', file);
         formData.append('product_id', productId);
-        console.log(file.name)
         setUploading(true);
-
         try {
             const config = {
                 headers: { 'Content-Type': 'multipart/form-data' },
@@ -86,7 +84,6 @@ const ProductEditScreen = () => {
         }
     };
 
-    console.log(API)
     return (
         <div>
             <Link to='/admin/productlist' className='btn btn-light my-3'>

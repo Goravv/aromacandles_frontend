@@ -79,7 +79,6 @@ export const listTopProducts = () => async (dispatch) => {
 export const listProductDetails = (id) => async (dispatch) => {
     try{
       dispatch({type : PRODUCT_DETAILS_REQUEST})
-    console.log(id); 
       const {data} = await API.get(`/api/products/${id}`)
       console.log('Data from /api/products/${id}:', data); // Add this line
   

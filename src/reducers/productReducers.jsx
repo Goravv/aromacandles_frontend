@@ -41,7 +41,6 @@ import {
             return { loading: true, products: [] }
 
         case PRODUCT_LIST_SUCCESS:
-            console.log(action.payload)
             return {
                 loading: false,
                 products: action.payload.products,

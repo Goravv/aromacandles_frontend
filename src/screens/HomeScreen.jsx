@@ -26,7 +26,6 @@ function HomeScreen() {
     dispatch(listProducts(keyword))
  
   },  [dispatch, keyword]);
-  console.log(products)
   return (
     <div>
         {!keyword && <ProductCarousel />}

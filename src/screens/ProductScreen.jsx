@@ -42,6 +42,7 @@ function ProductScreen() {
     e.preventDefault();
     dispatch(createProductReview(id, { rating, comment }));
   };
+  console.log(product.image)
 
   return (
     <div className="container mt-3">
@@ -54,14 +55,14 @@ function ProductScreen() {
         <>
           <Row>
             <Col md={6} className="mb-4">
-              <Image src={product.image} alt={product.name} fluid rounded className="border" />
+              <Image src={`https://aromacandles-backend.onrender.com${product.image}`} alt={product.name} fluid rounded className="border" />
             </Col>
             <Col md={3}>
               <ListGroup variant="flush">
                 <ListGroup.Item className="fw-bold fs-4">{product.name}</ListGroup.Item>
-                <ListGroup.Item>
+                {/* <ListGroup.Item>
                   <Rating value={product.rating} text={`${product.numReviews} reviews`} color={'#f8e825'} />
-                </ListGroup.Item>
+                </ListGroup.Item> */}
                 <ListGroup.Item className="text-muted">Price: <strong>{product.price}</strong></ListGroup.Item>
                 <ListGroup.Item>Description: {product.description}</ListGroup.Item>
               </ListGroup>
@@ -72,7 +73,7 @@ function ProductScreen() {
                   <ListGroup.Item>
                     <Row>
                       <Col>Price:</Col>
-                      <Col><strong>${product.price}</strong></Col>
+                      <Col><strong>{product.price}</strong></Col>
                     </Row>
                   </ListGroup.Item>
                   <ListGroup.Item>
@@ -112,7 +113,7 @@ function ProductScreen() {
             </Col>
           </Row>
 
-          <Row className="mt-4">
+          {/* <Row className="mt-4">
             <Col md={6}>
               <h4 className="mb-3">Reviews</h4>
               {product.reviews && product.reviews.length === 0 && <Message variant='info'>No Reviews</Message>}
@@ -169,7 +170,7 @@ function ProductScreen() {
                 </ListGroup.Item>
               </ListGroup>
             </Col>
-          </Row>
+          </Row> */}
         </>
       )}
     </div>

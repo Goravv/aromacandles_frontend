@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import API from "../api";
 
 function Product({ product }) {
-  console.log(`${API}/${product.image}`)
   return (
     <Card className="py-3 my-3 rounded shadow-sm border-0 ">
       <Link to={`/product/${product._id}`}>
